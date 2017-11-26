@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+/* -------------------------------------------------------------- 
+
+   * 파일명 : common.css
+   * 기능설명 : 공통 Style CSS
+   
+-------------------------------------------------------------- */
+
+/* Font Style */
+@font-face{
+	font-family:'NanumGothic';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/NanumGothic.eot');
+	src: local('※'),url('fonts/NanumGothic.eot?#iefix') format('embedded-opentype'), url('fonts/NanumGothic.woff') format('woff'), url('fonts/NanumGothic.ttf') format('truetype');
+}
+@font-face{
+	font-family:'NanumGothicBold';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/NanumGothicBold.eot');
+	src: local('※'),url('fonts/NanumGothicBold.eot?#iefix') format('embedded-opentype'), url('fonts/NanumGothicBold.woff') format('woff'), url('fonts/NanumGothicBold.ttf') format('truetype');
+}
+@font-face{
+	font-family:NanumGothicExtraBold;
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/NanumGothicExtraBold.eot');
+	src: local('※'),url('fonts/NanumGothicExtraBold.eot?#iefix') format('embedded-opentype'), url('fonts/NanumGothicExtraBold.woff') format('woff'), url('fonts/NanumGothicExtraBold.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:'MoebiusBoldEng';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/Moebius_Bold_eng.eot');
+	src: local('※'),url('fonts/Moebius_Bold_eng.eot?#iefix') format('embedded-opentype'), url('fonts/Moebius_Bold_eng.woff') format('woff'), url('fonts/Moebius_Bold_eng.ttf') format('truetype');
+}
+@font-face{
+	font-family:'MoebiusBoldkor';
+	font-style: normal;
+	font-weight:bold;
+	src: url('/web-design/css/font/Moebius_Bold_kor.eot');
+	src: local('※'),url('fonts/Moebius_Bold_kor.eot?#iefix') format('embedded-opentype'), url('fonts/Moebius_Bold_kor.woff') format('woff'), url('fonts/Moebius_Bold_kor.ttf') format('truetype');
+}
+@font-face{
+	font-family:'MoebiusRegularEng';
+	font-style: normal;
+	font-weight:bold;
+	src: url('fonts/Moebius_Regular_eng.eot');
+	src: local('※'),url('fonts/Moebius_Regular_eng.eot?#iefix') format('embedded-opentype'), url('fonts/Moebius_Regular_eng.woff') format('woff'), url('fonts/Moebius_Regular_eng.ttf') format('truetype');
+}
+@font-face{
+	font-family:'MoebiusRegularKor';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/Moebius_Regular_kor.eot');
+	src: local('※'),url('fonts/Moebius_Regular_kor.eot?#iefix') format('embedded-opentype'), url('fonts/Moebius_Regular_kor.woff') format('woff'), url('fonts/Moebius_Regular_kor.ttf') format('truetype');
+}
+@font-face{
+	font-family:'SKPGo_M';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/SKPGo_M.eot');
+	src: local('※'),url('fonts/SKPGo_M.eot?#iefix') format('embedded-opentype'), url('fonts/SKPGo_M.woff') format('woff'), url('fonts/SKPGo_M.ttf') format('truetype');
+}
+@font-face{
+	font-family:'SKPGo_B';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/SKPGo_B.eot');
+	src: local('※'),url('fonts/SKPGo_B.eot?#iefix') format('embedded-opentype'), url('fonts/SKPGo_B.woff') format('woff'), url('fonts/SKPGo_B.ttf') format('truetype');
+}
+
+/*
+@font-face{
+	font-family:'NotoSans';
+	font-style: normal;
+	font-weight:normal;
+	src: url('fonts/NotoSansKR-Regular.eot');
+	src: local('※'),url('fonts/NotoSansKR-Regular.eot?#iefix') format('embedded-opentype'), url('fonts/NotoSansKR-Regular.woff') format('woff'), url('fonts/NotoSansKR-Regular.ttf') format('truetype');
+}
+*/
+
+@font-face {
+	font-family:"NotoSans";
+	font-style: normal;
+	src:url('fonts/NotoSansKR-Regular.eot') format('eot');
+	src:local('※'),url('fonts/NotoSansKR-Regular.woff') format('woff') , url('fonts/NotoSansKR-Regular.ttf') format('truetype');
+	src:local('※'),url('fonts/NotoSansKR-Regular.otf') format('otf') , url('fonts/NotoSansKR-Regular.otf') format('opentype');
+}
+
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button,input,select,textarea{margin:0;padding:0;}
+body,h1,h2,h3,h4,h5,form,fieldset,button,input,select,textarea{font-family:'Arial', 'NanumGothic', '나눔고딕', 'Dotum', '돋움', sans-serif;font-size:13px;color:#777;}
+ul,ol{list-style-type:none;}
+img{border:0;vertical-align:top;}
+em,address{font-style:normal;}
+table{width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+fieldset{border:0;}
+legend{padding:0;}
+legend span{position:absolute;left:-9999px;}
+caption strong, caption details{position:absolute;left:-9999px;}
+/* caption, details{width:0;height:0;font-size:0;line-height:0;overflow:hidden;visibility:hidden;position:static;} */
+select,input{vertical-align:middle;}
+iframe{margin:0;padding:0;border:none;overflow-y:hidden;vertical-align:top;}
+a, a:visited{color:#333;text-decoration:none;}
+a:hover, a:focus, a:active{color:#333;text-decoration:underline;}
+button{background:transparent;vertical-align:middle;border:0;}
+pre,code{display:block;padding:10px;margin:0;word-wrap:break-word;white-space:pre-wrap;color:#333;line-height:1.6;}
+
+/* Skip navi */
+#skip_navi{position:relative;}
+#skip_navi a{display:block;width:1px;height:1px;margin-bottom:-1px;overflow:hidden;text-align:center;color:#000;white-space:nowrap;}
+#skip_navi a:focus,
+#skip_navi a:active{width:auto;height:auto;margin-bottom:10px;padding:5px;}
+
+/* Layout */
+#wrap{width:100%;}
+header{min-width:1280px;}
+#container{min-width:1280px;position:relative;}
+nav{height:100%;position:absolute;left:0;top:0;}
+#contents{min-width:1070px;min-height:820px;margin-left:210px;}
+#contents.full{margin-left:0;}
+footer{min-width:1280px;}
+
+/* header */
+#header{position:relative;}
+#header h1{width:210px;height:49px;position:absolute;left:0;top:0;background:#0c9998;border-bottom:1px solid #098185;}
+#header h1>a{display:block;margin:12px 0 0 20px;color:#fff;font-family:"MoebiusBoldkor";font-size:23px;font-weight:normal;text-decoration:none;}
+#header .top{height:50px;margin-left:210px;padding:0 20px 0 42px;background:#d8eaea;overflow:hidden;}
+#header .top h2{float:left;margin:0 0 0 10px;font-size:16px;color:#50647c;font-weight:normal;line-height:50px;}
+#header .top .user{float:right;margin:10px 0 0;overflow:hidden;}
+#header .top .user p{float:left;background:url('../img/ico_user.png') no-repeat left top;padding:0 0 0 30px;margin:5px 30px 3px 0;line-height:22px;color:#10315d;font-size:13px;}
+#header .top .user .btn{float:left;}
+#header .top .user .btn_my{display:inline-block;min-width:66px;padding:0 38px 0 14px/*4px 38px 5px 14px*/;background:#76c1c3 url('../img/bg_my.png') no-repeat 112px center;border-bottom:2px solid #54b1b4;color:#fff;font-family:'NanumGothic', '나눔고딕', 'Dotum', '돋움', sans-serif;font-size:14px;text-decoration:none;line-height:27px;}
+#header .top .user .btn_logout{display:inline-block;width:88px;padding:5px 0 6px 14px;background:#76c1c3 url('../img/bg_logout.png') no-repeat 73px center;border-bottom:2px solid #54b1b4;color:#fff;font-family:'Arial';font-size:14px;text-decoration:none;}
+#header .top .user .btn a:active{position:relative;top:1px;}
+#header .top .link_txt2{float:left;margin:0 0 0 20px;font-size:13px;font-weight:bold;text-decoration:underline;line-height:50px;}
+#header .top .link_txt2 a{color:#333;}
+
+/* GNB */
+.gnb_wrap{width:210px;height:100%;background:#0c9998;}
+#gnb{margin:0 0 120px 0;}
+
+#gnb li.depth1{border-top:1px solid #25a3a3;border-bottom:1px solid #217188;line-height:50px;padding:0 20px;}
+#gnb li.depth1:first-child{border-top:0;}
+#gnb li.depth1:last-child{border-bottom:1px solid #217188;}
+#gnb li.depth1>a{display:block;height:47px;background:url('../img/ico_gnb_off.png') no-repeat left 17px;padding:0 0 0 25px;font-size:16px;color:#fff;text-decoration:none;}
+#gnb li.depth1.on{background:#fff;}
+#gnb li.depth1.on>a{background:url('../img/ico_gnb_on.png') no-repeat left 17px;color:#ff8d52;font-weight:bold;}
+#gnb li.depth1.on ul.depth_ul1 li{background:#08617a;border-top:1px solid #217188;border-bottom:1px solid #06495f;}
+#gnb li.depth1.on ul.depth_ul1 li ul.depth_ul2 li{background:#08617a;border-top:0;border-bottom:0;}
+
+#gnb ul.depth_ul1{width:210px;margin-left:-20px;border-top:1px solid #217188;display:none;}
+#gnb ul.depth_ul1 li{border-top:1px solid #25a3a3;border-bottom:1px solid #217188;}
+#gnb ul.depth_ul1 li:last-child{border-bottom:0;}
+#gnb ul.depth_ul1 li >a{display:block;padding:0 20px;height:47px;font-size:14px;color:#b5f1e9;text-decoration:none;}
+#gnb ul.depth_ul1 li:hover, 
+#gnb ul.depth_ul1 li:focus{background:#08617a;}
+#gnb ul.depth_ul1 li:hover a, 
+#gnb ul.depth_ul1 li:focus a,
+#gnb ul.depth_ul1 li.on a{color:#ffa020;}
+#gnb ul.depth_ul1 li:hover ul.depth_ul2 li a, 
+#gnb ul.depth_ul1 li:focus ul.depth_ul2 li a{color:#b5f1e9;}
+
+#gnb ul.depth_ul2{width:210px;}
+#gnb ul.depth_ul2 li{border-top:0;border-bottom:0;}
+#gnb ul.depth_ul2 li:last-child{border-bottom:0;}
+#gnb ul.depth_ul2 li a{display:block;padding:10px 20px 10px 40px;height:20px;background:url('../img/ico_gnb_off2.png') no-repeat 26px 50%;font-size:14px;color:#b5f1e9 !important;text-decoration:none;line-height:23px;}
+#gnb ul.depth_ul2 li:hover, 
+#gnb ul.depth_ul2 li:focus{background:#2493b2;color:#fff !important;}
+#gnb ul.depth_ul2 li:hover a, 
+#gnb ul.depth_ul2 li:focus a,
+#gnb ul.depth_ul2 li.on a{background:#2493b2 url('../img/ico_gnb_on2.png') no-repeat 26px 50%;color:#fff !important;}
+
+/* footer */
+#footer{height:120px;background:#59616c;overflow:hidden;}
+#footer h1{float:left;width:86px;margin:35px 0 0 25px;}
+#footer .copy{float:left;margin:55px 0 0 20px;color:#92939b;font-size:11px;}
+#footer .common_clause{float:left;margin:53px 0 0 20px;}
+#footer .common_clause a{color:#4d98ff;font-weight:bold;text-decoration:underline;}
+
+.scroll_wrap{max-height:330px;overflow:auto;overflow-x:hidden;}
+
+/* URL 복사하기 */
+.clause_url textarea{width:95%;height:25px;}
+.cont textarea{width:95%;height:25px;}
+#bg_dim{position: fixed;left:0;top:0;width:100%;height:100%;background:#000;opacity: 0.5;filter:alpha(opacity=50);z-index: 1000;display:none;}
