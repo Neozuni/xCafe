@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- 단위 테스트시 추가  -->
+    <!-- <properties resource="config/jdbc.properties"/> -->
+
+    <typeAliases>
+        <typeAlias alias="member" type="model.MemberVO"/>
+    </typeAliases>
+
+
+    <!-- 단위 테스트시 추가.. -->
+    <!-- 	<environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+            properties 파일에 로드된 resource는 ${}로 접근 가능하다..EL식 표현
+                <property name="driver" value="${JDBC.Driver}"/>
+                <property name="url" value="${JDBC.ConnectionURL}"/>
+                <property name="username" value="${JDBC.Username}"/>
+                <property name="password" value="${JDBC.Password}"/>
+            </dataSource>
+        </environment>
+    </environments> -->
+    <mappers>
+        <mapper resource="sql/member-mapping.xml"/>
+    </mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
