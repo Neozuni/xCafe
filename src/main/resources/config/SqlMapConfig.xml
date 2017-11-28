@@ -7,7 +7,7 @@
     <!-- <properties resource="config/jdbc.properties"/> -->
 
     <typeAliases>
-        <typeAlias alias="member" type="model.MemberVO"/>
+        <typeAlias alias="member" type="com.neo.xcafe.model.MemberVO"/>
     </typeAliases>
 
 

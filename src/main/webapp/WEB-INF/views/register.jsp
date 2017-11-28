@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
 <%--
   Created by IntelliJ IDEA.
   User: zunix
