@@ -1,7 +1,5 @@
 # xCafe
-ProjextX
-
-ProjectX - xCafe
+ProjectX 
 
 * 작업기간	11.27~12.10
 * 상세일정     projectx 공유캘린더 참조
@@ -13,11 +11,12 @@ ProjectX - xCafe
 Done
 - [O] 설계, 핵심기능
 - [O] DB 테이블 설계
+- [O] 회원가입
+- [O] 로그인
+- [O] 로그아웃
 
 TodoList
-- [ ] 회원가입
-- [ ] 로그인
-- [ ] 로그아웃
+
 - [ ] 글쓰기
 - [ ] 리스트보기 페이징처리
 - [ ] 글상세보기
