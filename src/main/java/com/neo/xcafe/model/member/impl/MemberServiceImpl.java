@@ -1,8 +1,8 @@
-package com.neo.xcafe.model.impl;
+package com.neo.xcafe.model.member.impl;
 
-import com.neo.xcafe.model.MemberDao;
-import com.neo.xcafe.model.MemberService;
-import com.neo.xcafe.model.MemberVO;
+import com.neo.xcafe.model.member.MemberDao;
+import com.neo.xcafe.model.member.MemberService;
+import com.neo.xcafe.model.member.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

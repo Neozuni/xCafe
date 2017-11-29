@@ -10,7 +10,7 @@
 		userId, password, userName , phone, email,
 		FROM member
 	</sql>
-	<insert id="registerMember" parameterType="com.neo.xcafe.model.MemberVO">
+	<insert id="registerMember" parameterType="member">
 		INSERT
 		INTO member
 		VALUES(#{userId},#{password}, #{userName},#{phone},#{email})

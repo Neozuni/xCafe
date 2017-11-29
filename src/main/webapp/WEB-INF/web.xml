@@ -13,7 +13,7 @@
 
       <param-name>contextConfigLocation</param-name>
 
-      <param-value>/WEB-INF/bean-context.xml</param-value>
+      <param-value>/WEB-INF/spring/appServlet/*-context.xml</param-value>
 
     </init-param>
 
@@ -25,9 +25,15 @@
 
     <servlet-name>action</servlet-name>
 
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/</url-pattern>
 
   </servlet-mapping>
+
+  <welcome-file-list>
+
+    <welcome-file>index.jsp</welcome-file>
+
+  </welcome-file-list>
 
   <filter>
     <filter-name>encodingFilter</filter-name>

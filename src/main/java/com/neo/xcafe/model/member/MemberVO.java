@@ -1,4 +1,4 @@
-package com.neo.xcafe.model;
+package com.neo.xcafe.model.member;
 
 public class MemberVO {
     private String userId;

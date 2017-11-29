@@ -40,6 +40,7 @@
 
     function idCheck() { // 아이디 체크 눌렀을때 호출
         var cid = document.regForm.userId.value;
+
         if(cid==""){
             alert("아이디를 입력후 중복확인 해주세요");
         }else {
