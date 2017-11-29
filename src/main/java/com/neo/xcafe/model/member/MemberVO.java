@@ -11,8 +11,8 @@ public class MemberVO {
         super();
     }
 
-    public MemberVO(String userName, String password) {
-        this.userName = userName;
+    public MemberVO(String userId, String password) {
+        this.userName = userId;
         this.password = password;
     }
 

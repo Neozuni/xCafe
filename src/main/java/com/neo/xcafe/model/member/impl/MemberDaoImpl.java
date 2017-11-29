@@ -27,5 +27,9 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.selectOne("memberMapper.idcheck",id);
 	}
 
+	@Override
+	public MemberVO login(MemberVO vo) throws SQLException {
+		return sqlSession.selectOne("memberMapper.login",vo);
 
+	}
 }

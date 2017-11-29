@@ -12,14 +12,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>회원가입</title>
     <%@ include file="/WEB-INF/jsp/include/inc_header.jsp" %>
 </head>
 <body>
 <h2 align="center">회원가입</h2><p>
 <form name="regForm" action="register.do" method="post">
 
-    ID <input type="text" name="userId" onkeyup="idCheck()" id="id">
+    ID <input type="text" name="userId" onkeyup="idCheck()" id="userId">
     <span id="idCheckView"></span>
     <br><br>
 
@@ -57,7 +57,7 @@
     var id, idCheckView;
     function idCheck() {
         xhr = new XMLHttpRequest();
-        id = document.getElementById("id");//폼까지를 변수로 잡았다. // 수정함
+        id = document.getElementById("userId");//폼까지를 변수로 잡았다. // 수정함
         idCheckView = document.getElementById("idCheckView");
 
         if(id.value.length<5){//length() 가 아니다
@@ -66,19 +66,17 @@
         }
 
         xhr.onreadystatechange = callback;
-        xhr.open("get", "ajaxIdCheck.do?id="+id.value);
+        xhr.open("get", "ajaxIdCheck.do?id="+userId.value);
         xhr.send(null);
     }
     function callback() {
         if(xhr.readyState==4){
             if(xhr.status==200){
                 var jsonData = JSON.parse(xhr.responseText);
-                if(jsonData.flag){
-                    idCheckView.innerHTML =
-                        "<font color='red'>사용불가 아이디</font>";
+                if(jsonData.flag==false){ // TODO : ajax 통신은 이루어지나 메세지를 출력하지 못함
+                    idCheckView.innerHTML = "<font color='red'>사용불가 아이디</font>";
                 }else{
-                    idCheckView.innerHTML =
-                        "<font color='blue'>사용가능 아이디</font>";
+                    idCheckView.innerHTML = "<font color='blue'>사용가능 아이디</font>";
                 }
             }
         }

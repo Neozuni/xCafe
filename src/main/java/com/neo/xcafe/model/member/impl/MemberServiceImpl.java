@@ -28,5 +28,8 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
-
+	@Override
+	public MemberVO login(MemberVO vo) throws SQLException {
+		return memberDao.login(vo);
+	}
 }

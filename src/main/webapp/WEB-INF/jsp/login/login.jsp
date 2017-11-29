@@ -17,13 +17,15 @@
                 <form id="loginFrm" name="loginFrm" method="post">
                     <fieldset>
                         <legend><span> Login</span></legend>
+
                         <div class="form_input">
-                            <input type="text" id="username" name="username" placeholder="Enter username" title="ID" maxlength="16" >
-                            <input type="password" id="userPass" name="userPass" placeholder="Enter password" title="Password" maxlength="16" onKeyPress="if (event.keyCode==13){ goLoginProcess();event.returnValue=false}">
+                            <input type="text" id="userId" name="userId" placeholder="ID를 입력하세요" title="ID" maxlength="16" >
+                            <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" title="Password" maxlength="16" onKeyPress="if (event.keyCode==13){ goLoginProcess();event.returnValue=false}">
                             <a class="btn_login" id="btn_login">로그인</a>
                         </div>
+
                         <div class="btn">
-                            <a href="/register" class="btn_member">회원가입</a>
+                            <a href="/register" class="btn_member" type="submit">회원가입</a>
                         </div>
                     </fieldset>
                 </form>
@@ -48,6 +50,24 @@
 <!-- //wrap -->
 <script type="text/javascript">
 
+    function goLoginProcess(){
+        if($("#username").val() == ""){
+            alert("아이디를 입력하여 주세요");
+            return false;
+        }
+        if($("#password").val() == ""){
+            alert("비밀번호를 입력하여 주세요");
+            return false;
+        }
+
+        jQuery("#loginFrm").attr("action","login.do");
+        jQuery("#loginFrm").submit();
+
+    }
+
+    jQuery(document).on("click", "#btn_login", function(){
+        goLoginProcess();
+    });
 
 </script>
 </body>

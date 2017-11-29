@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 public class MemberController {
 	
@@ -31,6 +34,19 @@ public class MemberController {
 		return new ModelAndView("JsonView", "flag", flag);
 	}
 
+	@RequestMapping("login.do")
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response,MemberVO pvo)throws Exception{
+		String path = "login/login_fail";
+		MemberVO rvo = memberService.login(pvo);
+		System.out.println("pvo:: "+pvo);// phone,email 은 null
+		System.out.println("rvo:: "+rvo);// null이 없는 꽉찬 vo
+
+		if (rvo != null){
+			request.getSession().setAttribute("vo",rvo);
+			path = "login/login_ok";
+		}
+		return new ModelAndView(path);
+	}
 }
 
 
