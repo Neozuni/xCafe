@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
-
              xmlns="http://www.springframework.org/schema/mvc"
-
              xmlns:context="http://www.springframework.org/schema/context"
-
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
              xsi:schemaLocation="http://www.springframework.org/schema/beans
-
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-
         http://www.springframework.org/schema/mvc
-
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
-
         http://www.springframework.org/schema/context
-
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
-
-
     <context:component-scan base-package="com" />
 
-
-
     <!-- Enables the Spring MVC @Controller programming model -->
-
     <annotation-driven />
 
     <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -36,16 +21,17 @@
         <beans:property name="password" value="xcafedb"/>
     </beans:bean>
 
-    <!--  classpath 생략 못함-->
+    <!--  SQL bean classpath 생략 못함-->
     <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <beans:property name="configLocation" value="classpath:config/SqlMapConfig.xml"/>
         <beans:property name="dataSource" ref="dataSource"/>
     </beans:bean>
 
-    <!-- 생성자로 주입받는다. -->
+    <!-- Mybatis를 생성자로 주입받는다. -->
     <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <beans:constructor-arg ref="sqlSessionFactory"/>
     </beans:bean>
+
 
     <context:component-scan base-package="com.neo.xcafe"/>
 

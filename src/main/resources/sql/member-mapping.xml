@@ -3,6 +3,15 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberMapper">
+	<!--&lt;!&ndash; resultMap &ndash;&gt;-->
+	<!--<resultMap type="member" id="memberSelectMap">-->
+		<!--<result property="userId" column="userId" jdbcType="VARCHAR"/>-->
+		<!--<result property="userName" column="userName" jdbcType="VARCHAR"/>-->
+		<!--<result property="password" column="password" jdbcType="LONGTEXT"/>-->
+		<!--<result property="phone" column="phone" jdbcType="VARCHAR"/>-->
+		<!--<result property="email" column="email" jdbcType="VARCHAR"/>-->
+	<!--</resultMap>-->
+
 
 	<!--  sql 구문의 모듈화-->
 	<sql id="select-member">
@@ -10,18 +19,35 @@
 		userId, password, userName , phone, email,
 		FROM member
 	</sql>
+
+
+	<!-- 회원가입 -->
 	<insert id="registerMember" parameterType="member">
 		INSERT
-		INTO member
+		INTO member (userId, password, userName, phone, email)
 		VALUES(#{userId},#{password}, #{userName},#{phone},#{email})
 	</insert>
-	
+
+
+	<!-- idcheck -->
 	<select id="idcheck" parameterType="string" resultType="string">
 		SELECT userId FROM member
 		WHERE userid=#{value}
 	</select>
 
-</mapper>	
+</mapper>
+
+
+<!--
+Oracle 구문
+
+INSERT
+		INTO member
+		VALUES(#{userId},#{password}, #{userName},#{phone},#{email})
+
+
+
+-->
 
 
 
