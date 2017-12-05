@@ -5,9 +5,9 @@
 <mapper namespace="boardMapper">
 
     <!-- #0010 : Mysql 로 변경 -->
-    <insert id="write" parameterType="boardVO">
+    <insert id="write" parameterType="board" >
         INSERT INTO board (id,createDate, title, content,memberId)
-        VALUES (#{id},#{now()},#{title},#{content},#{MemberVO.userId})
+        VALUES (#{id},now(),#{title},#{content},#{memberVO.userId})
     </insert>
 
     <select id="selectByNoForDate" resultType="string" parameterType="int">
@@ -51,6 +51,8 @@ VALUES (now(),'#{title},#{content},'1',#{boardVO.userId},'0')
 <selectKey keyProperty="no" resultType="int" order="BEFORE">
             SELECT id FROM board
         </selectKey>
+
+useGeneratedKeys="true" keyProperty="id"
 
 -->
 

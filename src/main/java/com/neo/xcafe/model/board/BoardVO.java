@@ -8,7 +8,6 @@ public class BoardVO {
     private String title;
     private String content;
     private Boolean state; // 글삭제하면 상태변경후 표시하지 않음
-
     private MemberVO memberVO;
 
     public BoardVO() {

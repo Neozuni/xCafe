@@ -8,6 +8,7 @@
 
     <typeAliases>
         <typeAlias alias="member" type="com.neo.xcafe.model.member.MemberVO"/>
+        <typeAlias alias="board" type="com.neo.xcafe.model.board.BoardVO"/>
     </typeAliases>
 
 
@@ -26,6 +27,7 @@
     </environments> -->
     <mappers>
         <mapper resource="sql/member-mapping.xml"/>
+        <mapper resource="sql/board-mapping.xml" />
     </mappers>
 </configuration>
 
