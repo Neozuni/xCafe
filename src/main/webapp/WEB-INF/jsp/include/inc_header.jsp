@@ -28,3 +28,10 @@
 <script>
     hideLoading();
 </script>
+
+로그인 이름 : ${sessionScope.mvo.userName} <br>
+로그인 id : ${sessionScope.mvo.userId} <br>
+로그인 email : ${sessionScope.mvo.email} <br>
+<a href="/">메인 로그인페이지 </a> <br>
+<a href="/logout.do">로그아웃</a> <br>
+<a href="/w">글쓰기</a> <br>

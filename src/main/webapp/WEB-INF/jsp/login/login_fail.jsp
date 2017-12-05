@@ -14,7 +14,7 @@
 <body>
 <script type="text/javascript">
     alert("로그인 실패!!");
-    location.href="login/login";
+    location.href="/";
 </script>
 </body>
 </html>

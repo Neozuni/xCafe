@@ -18,8 +18,8 @@ public class MemberDaoImpl implements MemberDao{
 
 
 	@Override
-	public void registerMember(MemberVO vo) throws SQLException {
-		sqlSession.insert("memberMapper.registerMember",vo);	
+	public void registerMember(MemberVO mvo) throws SQLException {
+		sqlSession.insert("memberMapper.registerMember",mvo);
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	public MemberVO login(MemberVO vo) throws SQLException {
-		return sqlSession.selectOne("memberMapper.login",vo);
+	public MemberVO login(MemberVO mvo) throws SQLException {
+		return sqlSession.selectOne("memberMapper.login",mvo);
 
 	}
 }

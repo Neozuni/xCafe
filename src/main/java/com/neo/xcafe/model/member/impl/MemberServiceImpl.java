@@ -15,8 +15,8 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDao memberDao;
 	
 	@Override
-	public void registerMember(MemberVO vo) throws SQLException {
-		memberDao.registerMember(vo);
+	public void registerMember(MemberVO mvo) throws SQLException {
+		memberDao.registerMember(mvo);
 		
 	}
 
@@ -29,7 +29,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO login(MemberVO vo) throws SQLException {
-		return memberDao.login(vo);
+	public MemberVO login(MemberVO mvo) throws SQLException {
+		return memberDao.login(mvo);
 	}
 }
+

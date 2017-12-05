@@ -16,7 +16,7 @@
 <body>
 <center><h2>로그인 결과 출력..</h2></center><p>
     <c:choose>
-    <c:when test="${sessionScope.vo==null }">
+    <c:when test="${sessionScope.mvo==null }">
     <script type="text/javascript">
         alert("로그인 부터하세요 로그인페이지로 이동합니다...");
         location.href="/";
@@ -24,10 +24,19 @@
     </c:when>
     <c:otherwise>
     <script type="text/javascript">
-        alert("${sessionScope.vo.userName} 님 로그인 성공하셨어여!!");
-        location.href="/";
+        alert("${sessionScope.mvo.userName} 님 로그인 성공하였습니다");
+        // location.href="/";
+
     </script>
     </c:otherwise>
     </c:choose>
 </body>
+
+로그인됨 : ${sessionScope.mvo.userName} <br>
+<a href="/">메인 로그인페이지 </a> <br>
+<a href="/logout.do">로그아웃</a> <br>
+<a href="/w">글쓰기</a> <br>
+
+
+
 </html>

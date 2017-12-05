@@ -10,7 +10,7 @@
 		<!--<result property="userName" column="userName" jdbcType="VARCHAR"/>-->
 		<!--<result property="password" column="password" jdbcType="LONGTEXT"/>-->
 		<!--<result property="phone" column="phone" jdbcType="VARCHAR"/>-->
-		<!--<result property="email" column="email" jdbcType="VARCHAR"/>-->
+ 		<!--<result property="email" column="email" jdbcType="VARCHAR"/>-->
 	<!--</resultMap>-->
 
 
@@ -41,6 +41,8 @@
 		<include refid="select-member"/>
 		WHERE userId=#{userId} AND password=#{password}
 	</select>
+
+
 
 </mapper>
 
