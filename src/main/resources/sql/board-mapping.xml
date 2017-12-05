@@ -15,12 +15,23 @@
         WHERE id=#{VALUE}
     </select>
 
+    <!-- #0013 : 글목록에 이름 출력되지 않는 현상 해결 -->
+    <!-- result map 를 사용후 정상 출력 가능 -->
+    <resultMap type="board" id="boardListRM">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="createDate" column="createDate"/>
+        <result property="memberVO.userName" column="userName"/>
+        <result property="count" column="count"/>
+    </resultMap>
+
+
     <!--#0012 : BoardList & Paging-->
-    <select id="getBoardList" resultType="board" parameterType="string">
+    <select id="getBoardList" resultMap="boardListRM" parameterType="string">
     SELECT
           id,
           title,
-          m.userName,
+          userName,
           createDate,
           count
         FROM board ,(SELECT userId,userName FROM member) m
