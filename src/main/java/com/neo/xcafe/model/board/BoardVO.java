@@ -8,34 +8,18 @@ public class BoardVO {
     private String title;
     private String content;
     private Boolean state; // 글삭제하면 상태변경후 표시하지 않음
+    private int count; //조회수
     private MemberVO memberVO;
 
     public BoardVO() {
     }
 
-    public BoardVO(int id, String createDate, String title, String content, MemberVO memberVO) {
+    public BoardVO(int id, String createDate, String title, int count, MemberVO memberVO) {
         this.id = id;
         this.createDate = createDate;
         this.title = title;
-        this.content = content;
+        this.count = count;
         this.memberVO = memberVO;
-    }
-
-    public BoardVO(int id, String createDate, String title, String content, Boolean state, MemberVO memberVO) {
-        this.id = id;
-        this.createDate = createDate;
-        this.title = title;
-        this.content = content;
-        this.state = state;
-        this.memberVO = memberVO;
-    }
-
-    public BoardVO(int id, String createDate, String title, String content, Boolean state) {
-        this.id = id;
-        this.createDate = createDate;
-        this.title = title;
-        this.content = content;
-        this.state = state;
     }
 
     public int getId() {
@@ -78,6 +62,14 @@ public class BoardVO {
         this.state = state;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public MemberVO getMemberVO() {
         return memberVO;
     }
@@ -94,6 +86,7 @@ public class BoardVO {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", state=" + state +
+                ", count=" + count +
                 ", memberVO=" + memberVO +
                 '}';
     }

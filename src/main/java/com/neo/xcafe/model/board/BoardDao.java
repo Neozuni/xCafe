@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class BoardDao {
@@ -22,9 +23,20 @@ public class BoardDao {
     }
 
     //showContent
-    public BoardVO showContent(String no) throws SQLException{
-        return sqlSession.selectOne("boardMapper.showContent",no);
+    public BoardVO showContent(String id) throws SQLException{
+        return sqlSession.selectOne("boardMapper.showContent",id);
     }
 
+    // #0012 : BoardList & Paging
+    //GetBoardList
+    public List<BoardVO> getBoardList(String id)throws SQLException{
+        System.out.println("BoardDao - Query Run");
+        return sqlSession.selectList("boardMapper.getBoardList",id);
+    }
+
+    //페이징 처리로 추가
+    public int totalCount() throws SQLException {
+        return sqlSession.selectOne("boardMapper.totalCount");
+    }
 
 }

@@ -15,24 +15,86 @@
         WHERE id=#{VALUE}
     </select>
 
+    <!--#0012 : BoardList & Paging-->
+    <select id="getBoardList" resultType="board" parameterType="string">
+    SELECT
+          id,
+          title,
+          m.userName,
+          createDate,
+          count
+        FROM board ,(SELECT userId,userName FROM member) m
+        where m.userId = board.memberId
+        ORDER BY id DESC
+    </select>
 
-    <!-- 특정 no에 해당하는 상세글보는 resultaMap -->
-    <!--<resultMap type="boardVO" id="boardRM" extends="boardListRM">-->
-        <!--<result property="content" column="content"/>-->
-        <!--<result property="memberVO.id" column="id"/>-->
-
-    <!--</resultMap>-->
-
-
-    <!--<select id="showContent" parameterType="string" resultMap="boardRM">-->
-        <!--SELECT no, title, count, createDate, content, m.id, m.userName-->
-        <!--FROM board s, member m-->
-        <!--WHERE s.id = m.id AND no=#{value}-->
-    <!--</select>-->
+    <select id="totalCount" resultType="int">
+        SELECT COUNT(-1) FROM board
+    </select>
 
 
 </mapper>
 
+    <!--&#45;&#45;         select * from (-->
+<!--&#45;&#45;             select b.id,-->
+<!--&#45;&#45;               b.title,-->
+<!--&#45;&#45;               b.count,-->
+<!--&#45;&#45;               date_format(b.createdate, '%d-%m-%y') as createdate,-->
+<!--&#45;&#45;               m.username,-->
+<!--&#45;&#45;               ceil(b.rownum/5) as page-->
+<!--&#45;&#45;             from ((-->
+<!--&#45;&#45;                     select @rownum := @rownum + 1 as rownum,-->
+<!--&#45;&#45;                       board.*-->
+<!--&#45;&#45;                     from board,-->
+<!--&#45;&#45;                       (select @rownum := 0) r-->
+<!--&#45;&#45;                     order by id desc) b,-->
+<!--&#45;&#45;               member m )-->
+<!--&#45;&#45;-->
+<!--&#45;&#45;             where b.memberid = m.id-->
+<!--&#45;&#45;             order by b.id desc) a-->
+<!--&#45;&#45;             where a.page=#{value}-->
+
+    <!---->
+
+
+
+
+<!--<select id="getboardlist" parameterType="string" >-->
+<!--select * from (-->
+<!--select b.id,-->
+<!--b.title,-->
+<!--b.count,-->
+<!--date_format(b.createdate, '%d-%m-%y') as createdate,-->
+<!--m.username,-->
+<!--ceil(b.rownum/5) as page-->
+<!--from ((-->
+<!--select @rownum := @rownum + 1 as rownum,-->
+<!--board.*-->
+<!--from board,-->
+<!--(select @rownum := 0) r-->
+<!--order by id desc) b,-->
+<!--member m )-->
+
+<!--where b.memberid = m.id-->
+<!--order by b.id desc) a-->
+<!--where a.page=#{value}-->
+<!--</select>-->
+
+
+
+        <!-- 특정 no에 해당하는 상세글보는 resultaMap -->
+        <!--<resultMap type="boardVO" id="boardRM" extends="boardListRM">-->
+        <!--<result property="content" column="content"/>-->
+        <!--<result property="memberVO.id" column="id"/>-->
+
+        <!--</resultMap>-->
+
+
+        <!--<select id="showContent" parameterType="string" resultMap="boardRM">-->
+        <!--SELECT no, title, count, createDate, content, m.id, m.userName-->
+        <!--FROM board s, member m-->
+        <!--WHERE s.id = m.id AND no=#{value}-->
+        <!--</select>-->
 
 
 <!-- 오라클문법 :: write

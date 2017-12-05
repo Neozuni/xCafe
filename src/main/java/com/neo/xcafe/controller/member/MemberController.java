@@ -49,7 +49,7 @@ public class MemberController {
 
 		if (rvo != null){
 			request.getSession().setAttribute("mvo",rvo);
-			path = "login/login_ok";
+			path = "login/login"; // TODO: 잠시 로그인 페이지로 이동시킴
 		}
 		return new ModelAndView(path);
 	}

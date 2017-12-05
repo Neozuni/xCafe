@@ -32,6 +32,10 @@
 로그인 이름 : ${sessionScope.mvo.userName} <br>
 로그인 id : ${sessionScope.mvo.userId} <br>
 로그인 email : ${sessionScope.mvo.email} <br>
+<p>
 <a href="/">메인 로그인페이지 </a> <br>
 <a href="/logout.do">로그아웃</a> <br>
 <a href="/w">글쓰기</a> <br>
+<a href="/l">목록 껍때기만</a> <br>
+<a href="/list.do">목록 DB </a> <br>
+    <a href="list.do?pageNo=1">목록db page1 주고 호출</a>

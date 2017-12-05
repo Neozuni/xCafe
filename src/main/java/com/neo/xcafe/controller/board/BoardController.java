@@ -2,6 +2,7 @@ package com.neo.xcafe.controller.board;
 
 import com.neo.xcafe.model.board.BoardService;
 import com.neo.xcafe.model.board.BoardVO;
+import com.neo.xcafe.model.board.ListVO;
 import com.neo.xcafe.model.member.MemberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class BoardController {
@@ -23,6 +25,12 @@ public class BoardController {
     public String w(){
 
         return "board/write";
+    }
+
+    @RequestMapping("l")
+    public String l(){
+
+        return "board/list";
     }
 
 //    @RequestMapping("/write")
@@ -59,7 +67,7 @@ public class BoardController {
     }
 
     @RequestMapping("showContent.do")
-    public ModelAndView showContent(HttpServletRequest request, HttpServletResponse response,String no)
+    public ModelAndView showContent(HttpServletRequest request, HttpServletResponse response,String id)
             throws Exception{
         //로그인한 사람만 상세글 정보를 볼수있는 권한을 부여한다.
         MemberVO mvo = (MemberVO)request.getSession().getAttribute("mvo");
@@ -70,8 +78,19 @@ public class BoardController {
         //조회수 증가 로직을 추가
         //boardService.updateCount(no);
 
-        BoardVO bvo=boardService.showContent(no);
+        BoardVO bvo=boardService.showContent(id);
         return new ModelAndView("board/show_content", "bvo",bvo);
     }
 
+    // #0012 : BoardList & Paging
+    @RequestMapping("list.do")
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response,String id) throws Exception{
+        System.out.println("BoardController List.do 동작 pageno확인 : "+id);
+        List<BoardVO> list = boardService.getBoardList(id);
+        System.out.println("BoardController List.do 동작 lvo에 담음 : "+list);
+        return new ModelAndView("board/list","list",list);
+    }
+
+
 }
+
