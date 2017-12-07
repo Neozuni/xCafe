@@ -55,7 +55,8 @@
             <td colspan="2"  >
                 <img src="/resources/img/confirm.gif"  onclick="content_submit()">
                 <div class="btn">
-                    <a href="#" id="btn_idSearch" class="btn_find" onclick="">아이디 찾기</a>
+                    <a href="/list.do">글목록으로</a>
+                    <a href="/">메인화면으로</a>
                 </div>
             </td>
         </tr>

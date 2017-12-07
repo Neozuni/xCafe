@@ -48,6 +48,7 @@
                 </tr>
                 <tr>
                     <td valign="middle">
+                        <a href="/">메인화면으로</a>
                         <a href="list.do"><img alt="목록" src="resources/img/list_btn.jpg"></a>
                         <!--
                         현재 로그인한 사람이 자신의 글을 상세보기로 볼때는

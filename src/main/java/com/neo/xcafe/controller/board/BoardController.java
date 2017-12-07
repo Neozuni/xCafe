@@ -63,7 +63,7 @@ public class BoardController {
         boardService.write(bvo);//create date
         System.out.println("BoardController 수행완료 동작시 BVO : "+bvo);
         System.out.println("BoardController 수행완료 동작시 MVO : "+mvo);
-        return new ModelAndView("login/login", "bvo", bvo);
+        return new ModelAndView("board/list", "bvo", bvo);
     }
 
     @RequestMapping("showContent.do")

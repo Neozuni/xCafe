@@ -32,6 +32,7 @@
         </c:forEach>
     </table><p>
     <a href="${pageContext.request.contextPath/index.jsp}">홈으로 ~ (우선index.jsp로 연결함)</a>
-
+    <a href="/">메인화면으로</a>
+    <a href="/w">글쓰기</a>
 </body>
 </html>
