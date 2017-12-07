@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zunix
@@ -7,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>목 록</title>
@@ -23,11 +23,11 @@
         <%--@@@ 이부분 수정&점검 필요--%>
         <c:forEach items="${list}" var="board">
         <tr>
-            <td>${board.id}</td>
-            <td>${board.title} </td>
-            <td>${board.memberVO.userName}</td>
-            <td>${board.createDate}</td>
-            <td>${board.count}</td>
+            <td align="center">${board.id}</td>
+            <td align="left"><a href="/showContent.do?id=${board.id}"> ${board.title}</a> </td>
+            <td align="center">${board.memberVO.userName}</td>
+            <td align="center">${board.createDate}</td>
+            <td align="center">${board.count}</td>
         </tr>
         </c:forEach>
     </table><p>

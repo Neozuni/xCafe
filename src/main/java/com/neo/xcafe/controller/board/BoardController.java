@@ -48,13 +48,13 @@ public class BoardController {
     public ModelAndView write(HttpServletRequest request, HttpServletResponse response, HttpSession session, BoardVO bvo) throws Exception {
         MemberVO mvo = (MemberVO)session.getAttribute("mvo");
         System.out.println(" === Board Controller === ");
-        System.out.println(" === Write 동작 === ");
+        System.out.println(" --- Write 동작 --- ");
         System.out.println("BoardController 동작시 BVO : "+bvo);
         System.out.println("BoardController 동작시 MVO : "+mvo);
-//        if (mvo == null) { // 로그인 상태가 아님
-//            System.out.println("로그인 상태가 아닙니다 로그인페이지로 이동합니다");
-//            return new ModelAndView("redirect:/");//로그인페이지로 보냄
-//        }
+        if (mvo == null) { // 로그인 상태가 아님
+            System.out.println("로그인 상태가 아닙니다 로그인페이지로 이동합니다");
+            return new ModelAndView("redirect:/");//로그인페이지로 보냄
+        }
 
         //로그인상태 라면 ...
 
@@ -63,7 +63,7 @@ public class BoardController {
         boardService.write(bvo);//create date
         System.out.println("BoardController 수행완료 동작시 BVO : "+bvo);
         System.out.println("BoardController 수행완료 동작시 MVO : "+mvo);
-        return new ModelAndView("board/write", "bvo", bvo);
+        return new ModelAndView("login/login", "bvo", bvo);
     }
 
     @RequestMapping("showContent.do")

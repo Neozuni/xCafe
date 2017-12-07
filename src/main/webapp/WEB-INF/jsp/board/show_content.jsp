@@ -13,13 +13,13 @@
 <script type="text/javascript">
     function deleteBoard() {
         if(confirm("해당 글을 삭제하시겠습니까?")){
-            location.href="delete.do?no=${bvo.no}";
+            location.href="delete.do?id=${bvo.id}";
         }
     }
 
     function updateBoard() {
         if(confirm("해당 글을 수정하시겠습니까?")){
-            location.href="updateView.do?no=${bvo.no}";
+            location.href="updateView.do?id=${bvo.id}";
         }
     }
 </script>
@@ -35,7 +35,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>작성자 :  ${requestScope.bvo.memberVO.usesrName} |
+                    <td>작성자 :  ${requestScope.bvo.memberVO.userName} |
                         작성일시 : ${requestScope.bvo.createDate}
                         Count : ${requestScope.bvo.count}
                     </td>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td valign="middle">
-                        <a href="list.do"><img alt="목록" src="../img/list_btn.jpg"></a>
+                        <a href="list.do"><img alt="목록" src="resources/img/list_btn.jpg"></a>
                         <!--
                         현재 로그인한 사람이 자신의 글을 상세보기로 볼때는
                         삭제, 수정버튼이 보여지도록 작성
@@ -56,7 +56,7 @@
                         session.mvo==bvo.id
                         로그인한 사람이랑==현재 이 글을 보고 있는 사람
                         -->
-                        <c:if test="${sessionScope.mvo.id==bvo.memberVO.id}">
+                        <c:if test="${sessionScope.mvo.userId==bvo.memberVO.userId}">
                             <img alt="삭제" src="/resources/img/delete_btn.jpg" onclick="deleteBoard()">
                             <img alt="수정" src="/resources/img/modify_btn.jpg" onclick="updateBoard()">
                         </c:if>

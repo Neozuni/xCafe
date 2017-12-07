@@ -14,6 +14,15 @@ public class BoardVO {
     public BoardVO() {
     }
 
+    public BoardVO(int id, String createDate, String title, String content, Boolean state, MemberVO memberVO) {
+        this.id = id;
+        this.createDate = createDate;
+        this.title = title;
+        this.content = content;
+        this.state = state;
+        this.memberVO = memberVO;
+    }
+
     public BoardVO(int id, String createDate, String title, int count, MemberVO memberVO) {
         this.id = id;
         this.createDate = createDate;

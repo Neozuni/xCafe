@@ -25,6 +25,18 @@
         <result property="count" column="count"/>
     </resultMap>
 
+    <!-- #0014 : 글 상세 보기 -->
+    <select id="showContent" parameterType="string" resultMap="boardListRM">
+        SELECT
+        id,
+        title,
+        createDate,
+        content,
+        userId,
+        userName
+        FROM board b, (SELECT userId,userName FROM member) m
+        WHERE b.memberId = m.userId AND id=#{value}
+    </select>
 
     <!--#0012 : BoardList & Paging-->
     <select id="getBoardList" resultMap="boardListRM" parameterType="string">
