@@ -44,4 +44,15 @@ public class BoardDao {
     public void deleteBoard(String id) throws SQLException{
         sqlSession.delete("boardMapper.deleteBoard", id);
     }
+
+    // #0017 : 게시글 수정 및 카운트 증가
+    // 카운트 증가
+    public void updateCount(String id)throws SQLException{
+        sqlSession.update("boardMapper.updateCount",id);
+    }
+
+    // 게시물 수정
+    public void updateBoard(BoardVO vo)throws SQLException{
+        sqlSession.update("boardMapper.updateBoard",vo);
+    }
 }

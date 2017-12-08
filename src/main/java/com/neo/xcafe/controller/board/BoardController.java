@@ -76,8 +76,9 @@ public class BoardController {
             return new ModelAndView("redirect:/index.jsp");
         }
 
+        // #0017 : 조회수 증가로직
         //조회수 증가 로직을 추가
-        //boardService.updateCount(no);
+        boardService.updateCount(id);
 
         BoardVO bvo=boardService.showContent(id);
         return new ModelAndView("board/show_content", "bvo",bvo);
@@ -98,6 +99,21 @@ public class BoardController {
         boardService.deleteBoard(id);
         List<BoardVO> list = boardService.getBoardList("1");
         return new ModelAndView("board/list","list",list);
+    }
+
+    // #0017 : 게시글 수정
+    @RequestMapping("updateView.do")
+    public ModelAndView udpateView(String id)throws SQLException{
+        BoardVO bvo = boardService.showContent(id);
+        return new ModelAndView("board/update","bvo",bvo);
+    }
+
+    // 실질적 정보수정 부분
+    @RequestMapping("updateBoard.do")
+    public ModelAndView updateBoard(BoardVO pvo)throws SQLException{
+        boardService.updateBoard(pvo); // 디비 데이터를 직접수정
+        return new ModelAndView("board/show_content","bvo",boardService.showContent(pvo.getId()+""));
+        // pvo | boardService.showContent(id)
     }
 }
 

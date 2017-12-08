@@ -45,6 +45,16 @@ public class BoardService {
         boardDao.deleteBoard(id);
     }
 
+    // #0017 : 카운트 증가
+    public void updateCount(String id)throws SQLException{
+        boardDao.updateCount(id);
+    }
+
+    // #0017 : 게시글 수정
+    public void updateBoard(BoardVO vo)throws SQLException{
+        boardDao.updateBoard(vo);
+    }
+
 //        if(pageNo==null || pageNo=="") pageNo="1";
 //
 //        //@@@ 페이징 처리시 수정되어야 하는 부분

@@ -60,6 +60,18 @@
         SELECT COUNT(-1) FROM board
     </select>
 
+    <!-- #0017 : 글수정 및 조회수 증가-->
+    <!-- 조회수 증가 -->
+    <update id="updateCount" parameterType="string">
+        UPDATE board SET count=count+1 WHERE id=#{value}
+    </update>
+    <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="boardVO">
+        UPDATE board SET title=#{title},content=#{content}
+        WHERE id=#{id}
+
+    </update>
+
 
 </mapper>
 
