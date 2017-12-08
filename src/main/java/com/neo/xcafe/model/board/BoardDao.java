@@ -34,10 +34,6 @@ public class BoardDao {
         return sqlSession.selectList("boardMapper.getBoardList",id);
     }
 
-    //페이징 처리로 추가
-    public int totalCount() throws SQLException {
-        return sqlSession.selectOne("boardMapper.totalCount");
-    }
 
     // #0016 : 게시글 삭제
     // Delete Board
@@ -54,5 +50,11 @@ public class BoardDao {
     // 게시물 수정
     public void updateBoard(BoardVO vo)throws SQLException{
         sqlSession.update("boardMapper.updateBoard",vo);
+    }
+
+    // #0018 : PagingBean 추가
+    //페이징 처리로 추가
+    public int totalCount() throws SQLException {
+        return sqlSession.selectOne("boardMapper.totalCount");
     }
 }

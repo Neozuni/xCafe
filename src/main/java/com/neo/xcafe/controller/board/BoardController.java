@@ -85,25 +85,29 @@ public class BoardController {
     }
 
     // #0012 : BoardList & Paging
+    // #0018 : PagingBean 추가로 수정 id -> lvo & List<BoardVO> -> ListVO
     @RequestMapping("list.do")
-    public ModelAndView list(HttpServletRequest request, HttpServletResponse response,String id) throws Exception{
-        System.out.println("BoardController List.do 동작 pageno확인 : "+id);
-        List<BoardVO> list = boardService.getBoardList(id);
-        System.out.println("BoardController List.do 동작 lvo에 담음 : "+list);
-        return new ModelAndView("board/list","list",list);
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response,String pageNo) throws Exception{
+        System.out.println("BoardController List.do 동작 pageno확인 : "+pageNo);
+        ListVO lvo = boardService.getBoardList(pageNo);
+        System.out.println("BoardController List.do 동작 lvo에 pageno 담음 : "+pageNo);
+        return new ModelAndView("board/list","lvo",lvo);
     }
 
     // #0016 : 게시글 삭제
+    // #0018 : PagingBean 추가로 수정 id -> lvo
     @RequestMapping("delete.do")
     public ModelAndView deleteBoard(String id)throws SQLException{
         boardService.deleteBoard(id);
-        List<BoardVO> list = boardService.getBoardList("1");
-        return new ModelAndView("board/list","list",list);
+        ListVO lvo = boardService.getBoardList("1");
+        //return new ModelAndView("board/list","list",list);
+        return new ModelAndView("board/list","lvo",lvo);
     }
 
     // #0017 : 게시글 수정
+    // 수정화면으로 이동
     @RequestMapping("updateView.do")
-    public ModelAndView udpateView(String id)throws SQLException{
+    public ModelAndView updateView(String id)throws SQLException{
         BoardVO bvo = boardService.showContent(id);
         return new ModelAndView("board/update","bvo",bvo);
     }

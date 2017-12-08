@@ -21,9 +21,17 @@
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="createDate" column="createDate"/>
-        <result property="memberVO.userName" column="userName"/>
+        <result property="content" column="content" />
+        <result property="memberVO.userId" column="userId" />
         <result property="count" column="count"/>
+        <result property="memberVO.userName" column="userName"/>
     </resultMap>
+
+     <!--#0017 : error 로인해 update -->
+    <!--<resultMap type="boardVO" id="boardRM" extends="boardListRM">-->
+        <!--<result property="content" column="content"/>-->
+        <!--<result property="memberVO.userName" column="userName"/>-->
+    <!--</resultMap>-->
 
     <!-- #0014 : 글 상세 보기 -->
     <select id="showContent" parameterType="string" resultMap="boardListRM">
@@ -33,22 +41,41 @@
         createDate,
         content,
         userId,
+        count,
         userName
         FROM board b, (SELECT userId,userName FROM member) m
         WHERE b.memberId = m.userId AND id=#{value}
     </select>
 
     <!--#0012 : BoardList & Paging-->
-    <select id="getBoardList" resultMap="boardListRM" parameterType="string">
-    SELECT
-          id,
-          title,
-          userName,
-          createDate,
-          count
-        FROM board ,(SELECT userId,userName FROM member) m
-        where m.userId = board.memberId
-        ORDER BY id DESC
+    <select id="getBoardList" resultMap="boardListRM" parameterType="board">
+      SELECT * FROM (
+             SELECT b.id,
+               b.title,
+               b.count,
+               date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
+               m.userName,
+               CEIL(b.rownum/5) AS page
+             FROM ((
+                     SELECT @rownum := @rownum + 1 AS rownum,
+                       board.*
+                     FROM board,
+                       (SELECT @rownum := 0) r
+                     ORDER BY id DESC) b,
+               member m )
+             WHERE b.memberId = m.userId
+             ORDER BY b.Id DESC) a
+             WHERE a.page=#{value}
+
+--     SELECT
+--           id,
+--           title,
+--           userName,
+--           createDate,
+--           count
+--         FROM board ,(SELECT userId,userName FROM member) m
+--         where m.userId = board.memberId
+--         ORDER BY id DESC
     </select>
 
     <!-- #0016 : 글삭제 -->
@@ -56,45 +83,45 @@
         DELETE FROM board WHERE id=#{value}
     </delete>
 
-    <select id="totalCount" resultType="int">
-        SELECT COUNT(-1) FROM board
-    </select>
 
     <!-- #0017 : 글수정 및 조회수 증가-->
     <!-- 조회수 증가 -->
     <update id="updateCount" parameterType="string">
         UPDATE board SET count=count+1 WHERE id=#{value}
     </update>
-    <!-- 게시글 수정 -->
-    <update id="updateBoard" parameterType="boardVO">
-        UPDATE board SET title=#{title},content=#{content}
-        WHERE id=#{id}
 
+     <!-- 게시글 수정 -->
+    <update id="updateBoard" parameterType="board" >
+        UPDATE board
+        SET title=#{title}, content=#{content}
+        WHERE id = #{id}
     </update>
 
+    <!-- #0018 : PagingBean 추가  -->
+    <!-- 페이징 처리 -->
+    <select id="totalCount" resultType="int">
+        SELECT COUNT(-1) FROM board
+    </select>
 
 </mapper>
 
-    <!--&#45;&#45;         select * from (-->
-<!--&#45;&#45;             select b.id,-->
-<!--&#45;&#45;               b.title,-->
-<!--&#45;&#45;               b.count,-->
-<!--&#45;&#45;               date_format(b.createdate, '%d-%m-%y') as createdate,-->
-<!--&#45;&#45;               m.username,-->
-<!--&#45;&#45;               ceil(b.rownum/5) as page-->
-<!--&#45;&#45;             from ((-->
-<!--&#45;&#45;                     select @rownum := @rownum + 1 as rownum,-->
-<!--&#45;&#45;                       board.*-->
-<!--&#45;&#45;                     from board,-->
-<!--&#45;&#45;                       (select @rownum := 0) r-->
-<!--&#45;&#45;                     order by id desc) b,-->
-<!--&#45;&#45;               member m )-->
-<!--&#45;&#45;-->
-<!--&#45;&#45;             where b.memberid = m.id-->
-<!--&#45;&#45;             order by b.id desc) a-->
-<!--&#45;&#45;             where a.page=#{value}-->
-
-    <!---->
+              <!--select * from (-->
+             <!--select b.id,-->
+               <!--b.title,-->
+               <!--b.count,-->
+               <!--date_format(b.createdate, '%d-%m-%y') as createdate,-->
+               <!--m.username,-->
+               <!--ceil(b.rownum/5) as page-->
+             <!--from ((-->
+                     <!--select @rownum := @rownum + 1 as rownum,-->
+                       <!--board.*-->
+                     <!--from board,-->
+                       <!--(select @rownum := 0) r-->
+                     <!--order by id desc) b,-->
+               <!--member m )-->
+             <!--where b.memberid = m.id-->
+             <!--order by b.id desc) a-->
+             <!--where a.page=#{value}-->
 
 
 

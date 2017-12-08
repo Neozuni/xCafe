@@ -2,6 +2,7 @@ package com.neo.xcafe.model.board;
 
 import java.util.List;
 // #0012 : BoardList & Paging
+// #0018 : PagingBean 추가
 public class ListVO {
     private List<BoardVO> list;
     private PagingBean pagingBean;

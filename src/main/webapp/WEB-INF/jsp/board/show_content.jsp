@@ -37,7 +37,7 @@
                 <tr>
                     <td>작성자 :  ${requestScope.bvo.memberVO.userName} |
                         작성일시 : ${requestScope.bvo.createDate}
-                        Count : ${requestScope.bvo.count}
+                        | Count : ${requestScope.bvo.count}
                     </td>
                 </tr>
                 <tr>
