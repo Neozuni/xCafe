@@ -51,6 +51,11 @@
         ORDER BY id DESC
     </select>
 
+    <!-- #0016 : 글삭제 -->
+    <delete id="deleteBoard">
+        DELETE FROM board WHERE id=#{value}
+    </delete>
+
     <select id="totalCount" resultType="int">
         SELECT COUNT(-1) FROM board
     </select>

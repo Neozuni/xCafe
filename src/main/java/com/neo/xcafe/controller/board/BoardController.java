@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -91,6 +92,12 @@ public class BoardController {
         return new ModelAndView("board/list","list",list);
     }
 
-
+    // #0016 : 게시글 삭제
+    @RequestMapping("delete.do")
+    public ModelAndView deleteBoard(String id)throws SQLException{
+        boardService.deleteBoard(id);
+        List<BoardVO> list = boardService.getBoardList("1");
+        return new ModelAndView("board/list","list",list);
+    }
 }
 

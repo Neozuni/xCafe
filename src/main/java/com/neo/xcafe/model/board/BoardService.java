@@ -40,6 +40,10 @@ public class BoardService {
         return boardDao.getBoardList(id);
     }
 
+    // #0016 : 게시글 삭제
+    public void deleteBoard(String id)throws SQLException{
+        boardDao.deleteBoard(id);
+    }
 
 //        if(pageNo==null || pageNo=="") pageNo="1";
 //

@@ -39,4 +39,9 @@ public class BoardDao {
         return sqlSession.selectOne("boardMapper.totalCount");
     }
 
+    // #0016 : 게시글 삭제
+    // Delete Board
+    public void deleteBoard(String id) throws SQLException{
+        sqlSession.delete("boardMapper.deleteBoard", id);
+    }
 }
