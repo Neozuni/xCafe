@@ -5,10 +5,11 @@
   Time: PM 3:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <%--<%@ include file="/WEB-INF/jsp/include/inc_header.jsp" %>--%>
 </head>
 <script type="text/javascript">
     function deleteBoard() {
@@ -28,6 +29,7 @@
     <tr>
         <td>
             <table width="550">
+                <hr style="color: #6691BC; margin: 0">
                 <tr>
                     <td><b>글번호 : ${requestScope.bvo.id} |
                         타이틀 : ${requestScope.bvo.title}</b>

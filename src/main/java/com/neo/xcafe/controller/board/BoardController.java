@@ -55,16 +55,19 @@ public class BoardController {
         if (mvo == null) { // 로그인 상태가 아님
             System.out.println("로그인 상태가 아닙니다 로그인페이지로 이동합니다");
             return new ModelAndView("redirect:/");//로그인페이지로 보냄
+            //return "login/login";
         }
 
         //로그인상태 라면 ...
+
 
         bvo.setMemberVO(mvo);// bvo & mvo hasing ok
         System.out.println("bvo & mvo hasing "+bvo);
         boardService.write(bvo);//create date
         System.out.println("BoardController 수행완료 동작시 BVO : "+bvo);
         System.out.println("BoardController 수행완료 동작시 MVO : "+mvo);
-        return new ModelAndView("board/list", "bvo", bvo);
+        //return new ModelAndView("board/list.do", "bvo", bvo);
+        return new ModelAndView("redirect:/list.do");
     }
 
     @RequestMapping("showContent.do")

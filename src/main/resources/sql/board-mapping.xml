@@ -55,7 +55,7 @@
                b.count,
                date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
                m.userName,
-               CEIL(b.rownum/5) AS page
+               CEIL(b.rownum/10) AS page
              FROM ((
                      SELECT @rownum := @rownum + 1 AS rownum,
                        board.*
