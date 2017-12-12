@@ -93,8 +93,8 @@
      <!-- 게시글 수정 -->
     <update id="updateBoard" parameterType="board" >
         UPDATE board
-        SET title=#{title}, content=#{content}
-        WHERE id = #{id}
+        SET updateDate=now() title=#{title}, content=#{content}
+        WHERE id = #{bvo.id}
     </update>
 
     <!-- #0018 : PagingBean 추가  -->

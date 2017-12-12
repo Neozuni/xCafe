@@ -53,6 +53,7 @@ public class BoardService {
 
     // #0017 : 게시글 수정
     public void updateBoard(BoardVO vo)throws SQLException{
+        System.out.println("BoardService : updateBoard 작동 "+vo);
         boardDao.updateBoard(vo);
     }
 

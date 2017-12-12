@@ -93,7 +93,7 @@
 
 /* reset */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button,input,select,textarea{margin:0;padding:0;}
-body,h1,h2,h3,h4,h5,form,fieldset,button,input,select,textarea{font-family:'Arial', 'NanumGothic', '나눔고딕', 'Dotum', '돋움', sans-serif;font-size:13px;color:#777;}
+body,h1,h2,h3,h4,h5,form,fieldset,button,input,select,textarea{font-family:'Arial', 'NanumGothic', '나눔고딕', 'Dotum', '돋움', sans-serif;font-size:13px;color: #00586e;}
 ul,ol{list-style-type:none;}
 img{border:0;vertical-align:top;}
 em,address{font-style:normal;}

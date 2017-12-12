@@ -49,7 +49,8 @@ public class MemberController {
 
 		if (rvo != null){
 			request.getSession().setAttribute("mvo",rvo);
-			path = "login/login"; // TODO: 잠시 로그인 페이지로 이동시킴
+			//path = "login/login"; // TODO: 잠시 로그인 페이지로 이동시킴
+			path = "redirect:/list.do"; // TODO: 로그인 되면 전체 글목록으로 이동
 		}
 		return new ModelAndView(path);
 	}

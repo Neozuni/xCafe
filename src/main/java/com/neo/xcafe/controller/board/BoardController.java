@@ -1,5 +1,6 @@
 package com.neo.xcafe.controller.board;
 
+import com.neo.xcafe.model.board.BoardDao;
 import com.neo.xcafe.model.board.BoardService;
 import com.neo.xcafe.model.board.BoardVO;
 import com.neo.xcafe.model.board.ListVO;
@@ -57,10 +58,7 @@ public class BoardController {
             return new ModelAndView("redirect:/");//로그인페이지로 보냄
             //return "login/login";
         }
-
         //로그인상태 라면 ...
-
-
         bvo.setMemberVO(mvo);// bvo & mvo hasing ok
         System.out.println("bvo & mvo hasing "+bvo);
         boardService.write(bvo);//create date
@@ -112,13 +110,17 @@ public class BoardController {
     @RequestMapping("updateView.do")
     public ModelAndView updateView(String id)throws SQLException{
         BoardVO bvo = boardService.showContent(id);
+        System.out.println("== Controller : updateView.do : id? : "+id);
+        System.out.println("== Controller : updateView.do : bvo? : "+bvo);
         return new ModelAndView("board/update","bvo",bvo);
     }
 
     // 실질적 정보수정 부분
-    @RequestMapping("updateBoard.do")
-    public ModelAndView updateBoard(BoardVO pvo)throws SQLException{
+    @RequestMapping("updateBoard.do") // TODO: 게시글 수정이 되지 않음
+    public ModelAndView updateBoard(BoardVO pvo,BoardVO bvo)throws SQLException{
+        System.out.println("== Controller : updateBoard.do : pvo? : "+pvo);
         boardService.updateBoard(pvo); // 디비 데이터를 직접수정
+        System.out.println("== Controller / updateBoard.do 작동 : 디비데이터가 직접 수정됨 : "+pvo+"id:"+pvo.getId());
         return new ModelAndView("board/show_content","bvo",boardService.showContent(pvo.getId()+""));
         // pvo | boardService.showContent(id)
     }

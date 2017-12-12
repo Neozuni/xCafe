@@ -49,6 +49,7 @@ public class BoardDao {
 
     // 게시물 수정
     public void updateBoard(BoardVO vo)throws SQLException{
+        System.out.println("BoardDao : updateBoard 동작 :"+vo);
         sqlSession.update("boardMapper.updateBoard",vo);
     }
 

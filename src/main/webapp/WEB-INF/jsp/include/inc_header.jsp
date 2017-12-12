@@ -29,7 +29,7 @@
     hideLoading();
 </script>
 
-<b> 로그인 이름 : ${sessionScope.mvo.userName} | 로그인 id : ${sessionScope.mvo.userId}| 로그인 email : ${sessionScope.mvo.email} <br></b>
+<b> 로그인 이름 : ${sessionScope.mvo.userName}님 환영 ! | 로그인 id : ${sessionScope.mvo.userId}| 로그인 email : ${sessionScope.mvo.email} <br></b>
 <p><hr>
 <a href="/">메인 로그인페이지 | </a> <a href="/logout.do">로그아웃 |</a> <a href="/w">글쓰기 |</a><a href="/list.do"> 글전체 목록보기 </a> <br>
 <p><hr>
