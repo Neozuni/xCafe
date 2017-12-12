@@ -117,7 +117,7 @@ public class BoardController {
 
     // 실질적 정보수정 부분
     @RequestMapping("updateBoard.do") // TODO: 게시글 수정이 되지 않음
-    public ModelAndView updateBoard(BoardVO pvo,BoardVO bvo)throws SQLException{
+    public ModelAndView updateBoard(BoardVO pvo)throws SQLException{
         System.out.println("== Controller : updateBoard.do : pvo? : "+pvo);
         boardService.updateBoard(pvo); // 디비 데이터를 직접수정
         System.out.println("== Controller / updateBoard.do 작동 : 디비데이터가 직접 수정됨 : "+pvo+"id:"+pvo.getId());

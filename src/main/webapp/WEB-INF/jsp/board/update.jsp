@@ -13,12 +13,15 @@
 <body>
 <form method="post" action="/updateBoard.do"
       <td cellpadding="5">
-          <b>
-
-                  글번호 : ${bvo.id}
-              | 타이틀 : <input type="text" name="title" value="${bvo.title}"></input></b>
+          <tr>
+              <td>
+                  <b> 글번호 : <input type=text name=id value=${bvo.id} readonly></input>
+                      | 타이틀 : <input type="text" name="title" value="${bvo.title}"></input></b>
+              </td>
+          </tr></td>
+      </td>
           <hr style="color:#6691BC;border-style:dotted;margin: 0">
-      </td></tr>
+
     <tr>
         <td>
             <font size="2">작성자 : <input type="text" name="writer" value="${bvo.memberVO.userName}" readonly></input>
