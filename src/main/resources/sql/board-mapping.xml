@@ -5,9 +5,10 @@
 <mapper namespace="boardMapper">
 
     <!-- #0010 : Mysql 로 변경 -->
+    <!-- #0024 : Join 을 통한 DB 호출 글쓰기 -->
     <insert id="write" parameterType="board" >
         INSERT INTO board (id,createDate, title, content,memberId)
-        VALUES (#{id},now(),#{title},#{content},#{memberVO.userId})
+        VALUES (#{id},now(),#{title},#{content},#{memberVO.id})
     </insert>
 
     <select id="selectByNoForDate" resultType="string" parameterType="int">
@@ -24,6 +25,7 @@
         <result property="content" column="content" />
         <result property="memberVO.userId" column="userId" />
         <result property="count" column="count"/>
+        <result property="memberVO.id" column="memberid"/>
         <result property="memberVO.userName" column="userName"/>
     </resultMap>
 
@@ -48,34 +50,43 @@
     </select>
 
     <!--#0012 : BoardList & Paging-->
-    <select id="getBoardList" resultMap="boardListRM" parameterType="board">
-      SELECT * FROM (
-             SELECT b.id,
-               b.title,
-               b.count,
-               date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
-               m.userName,
-               CEIL(b.rownum/10) AS page
-             FROM ((
-                     SELECT @rownum := @rownum + 1 AS rownum,
-                       board.*
-                     FROM board,
-                       (SELECT @rownum := 0) r
-                     ORDER BY id DESC) b,
-               member m )
-             WHERE b.memberId = m.userId
-             ORDER BY b.Id DESC) a
-             WHERE a.page=#{value}
+    <!--<select id="getBoardList" resultMap="boardListRM" parameterType="board">-->
+      <!--SELECT * FROM (-->
+             <!--SELECT-->
+               <!--b.id,-->
+               <!--b.title,-->
+               <!--b.count,-->
+               <!--date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,-->
+               <!--m.userName,-->
+               <!--CEIL(b.rownum/10) AS page-->
+             <!--FROM (-->
+             <!--(SELECT @rownum := @rownum + 1 AS rownum,-->
+                       <!--board.*-->
+                     <!--FROM board,-->
+                       <!--(SELECT @rownum := 0) r-->
+                     <!--ORDER BY id DESC) b,-->
+               <!--member m-->
+               <!--)-->
+             <!--WHERE b.memberId = m.userId-->
+             <!--ORDER BY b.Id DESC) a-->
+             <!--WHERE a.page=#{value}-->
 
---     SELECT
---           id,
---           title,
---           userName,
---           createDate,
---           count
---         FROM board ,(SELECT userId,userName FROM member) m
---         where m.userId = board.memberId
---         ORDER BY id DESC
+    <!--</select>-->
+
+    <!-- #0024 : 테이블 조인 방법으로 변경 -->
+    <select id="getBoardList" resultMap="boardListRM" parameterType="board">
+        SELECT
+              b.id,
+              m.userId,
+              m.userName,
+              b.title,
+              b.content,
+              date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
+              b.count
+            FROM board AS b LEFT JOIN member AS m
+                ON m.id = b.memberId
+            ORDER BY b.id DESC
+
     </select>
 
     <!-- #0016 : 글삭제 -->

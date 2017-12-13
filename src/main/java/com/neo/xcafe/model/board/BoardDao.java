@@ -14,6 +14,7 @@ public class BoardDao {
     @Autowired
     private SqlSession sqlSession;
 
+    // #0024 : Join 을 통한 DB 호출 글쓰기
     public int write(BoardVO bvo)throws SQLException{
         return sqlSession.insert("boardMapper.write",bvo);
     }

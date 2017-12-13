@@ -66,6 +66,9 @@ public class MemberController {
 		}
 		return new ModelAndView("login/login");
 	}
+
+	// Todo :: #0024: join 을 이용하여 댓글 게시판 작업 시작
+	// member.id 를 기준으로 테이블 조인을 이용하여 board에 memberId 에 m.id 값을 저장하고 호출해보자 (~12.13)
 }
 
 

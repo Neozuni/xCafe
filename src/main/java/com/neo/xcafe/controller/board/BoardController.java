@@ -46,6 +46,7 @@ public class BoardController {
 //    }
 
     // 글쓰기 :: 지금은 기능 사용하지 않음 이후 로그인 여부 체크후 글쓰기로 이동
+    // #0024 : Join 을 통한 DB 호출 글쓰기
     @RequestMapping("write.do")
     public ModelAndView write(HttpServletRequest request, HttpServletResponse response, HttpSession session, BoardVO bvo) throws Exception {
         MemberVO mvo = (MemberVO)session.getAttribute("mvo");
@@ -60,8 +61,11 @@ public class BoardController {
         }
         //로그인상태 라면 ...
         bvo.setMemberVO(mvo);// bvo & mvo hasing ok
+
         System.out.println("bvo & mvo hasing "+bvo);
+
         boardService.write(bvo);//create date
+
         System.out.println("BoardController 수행완료 동작시 BVO : "+bvo);
         System.out.println("BoardController 수행완료 동작시 MVO : "+mvo);
         //return new ModelAndView("board/list.do", "bvo", bvo);

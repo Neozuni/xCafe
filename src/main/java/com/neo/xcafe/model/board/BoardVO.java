@@ -2,12 +2,15 @@ package com.neo.xcafe.model.board;
 
 import com.neo.xcafe.model.member.MemberVO;
 
+// #0024 : Join 을 통한 DB 호출 글쓰기
+// 필드 추가 memberId
 public class BoardVO {
     private int id; // 글번호
     private String createDate; // 글생성일
     private String title;
     private String content;
     private Boolean state; // 글삭제하면 상태변경후 표시하지 않음
+    private int memberId;
     private int count; //조회수
     private MemberVO memberVO;
 
@@ -16,29 +19,32 @@ public class BoardVO {
 
 
 
-    public BoardVO(int id, String createDate, String title, String content, Boolean state, MemberVO memberVO) {
+    public BoardVO(int id, String createDate, String title, String content, Boolean state,int memberId, MemberVO memberVO) {
         this.id = id;
         this.createDate = createDate;
         this.title = title;
         this.content = content;
         this.state = state;
         this.memberVO = memberVO;
+        this.memberId = memberId;
     }
 
-    public BoardVO(int id, String createDate, String title, int count, MemberVO memberVO) {
+    public BoardVO(int id, String createDate, String title, int count,int memberId, MemberVO memberVO) {
         this.id = id;
         this.createDate = createDate;
         this.title = title;
         this.count = count;
         this.memberVO = memberVO;
+        this.memberId = memberId;
     }
 
-    public BoardVO(int id, String createDate, String title, String content, int count) {
+    public BoardVO(int id, String createDate, String title, String content, int count,int memberId) {
         this.id = id;
         this.createDate = createDate;
         this.title = title;
         this.content = content;
         this.count = count;
+        this.memberId = memberId;
     }
 
     public int getId() {
@@ -97,6 +103,14 @@ public class BoardVO {
         this.memberVO = memberVO;
     }
 
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
+    }
+
     @Override
     public String toString() {
         return "BoardVO{" +
@@ -105,6 +119,7 @@ public class BoardVO {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", state=" + state +
+                ", memberId=" + memberId +
                 ", count=" + count +
                 ", memberVO=" + memberVO +
                 '}';

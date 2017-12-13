@@ -17,7 +17,7 @@
 	<!--  sql 구문의 모듈화 마이바티스 사이트에 자세한 설명 있음 -->
 	<sql id="select-member">
 		SELECT 
-		userId, password, userName , phone, email
+		id,userId, password, userName , phone, email
 		FROM member
 	</sql>
 
@@ -33,7 +33,7 @@
 	<!-- ajax 를 위한 idcheck -->
 	<select id="idcheck" parameterType="string" resultType="string">
 		SELECT userId FROM member
-		WHERE userid=#{value}
+		WHERE userId=#{value}
 	</select>
 
 	<!-- login :: resultMap 을 사용해야하나 오류로 hashmap으로 대체-->

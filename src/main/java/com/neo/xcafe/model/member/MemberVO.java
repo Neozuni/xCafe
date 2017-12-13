@@ -1,6 +1,9 @@
 package com.neo.xcafe.model.member;
 
+// #0024 : Join 을 통한 DB 호출 글쓰기
+// 필드 추가 id
 public class MemberVO {
+    private int id;
     private String userId;
     private String userName;
     private String email;
@@ -11,17 +14,27 @@ public class MemberVO {
         super();
     }
 
-    public MemberVO(String userId, String password) {
+    public MemberVO(int id,String userId, String password) {
+        this.id = id;
         this.userName = userId;
         this.password = password;
     }
 
-    public MemberVO(String userId, String userName, String email, String phone, String password) {
+    public MemberVO(int id,String userId, String userName, String email, String phone, String password) {
+        this.id = id;
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.phone = phone;
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUserId() {
@@ -67,7 +80,8 @@ public class MemberVO {
     @Override
     public String toString() {
         return "MemberVO{" +
-                "userId='" + userId + '\'' +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
@@ -75,3 +89,4 @@ public class MemberVO {
                 '}';
     }
 }
+

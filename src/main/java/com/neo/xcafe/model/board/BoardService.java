@@ -13,15 +13,18 @@ public class BoardService {
     private BoardDao boardDao;
 
     //글쓰기
+    // #0024 : Join 을 통한 DB 호출 글쓰기
     public void write(BoardVO bvo)throws SQLException{
         System.out.println("==== BoardService ====");
         System.out.println("Brfore BVO ::" +bvo.getId()); //0
         boardDao.write(bvo); // select key가 돌아서 시퀀스에 vo 주입
         System.out.println("After BVO ::" +bvo.getId()); // 3
 
+        // 임시 String id = boardDao.selectByNoForDate(bvo.getId());//3
         String date = boardDao.selectByNoForDate(bvo.getId());//3
         //받아온 날짜를 bvo 에 세팅하기
         bvo.setCreateDate(date);
+        // 임시 bvo.setCreateDate(id);
     }
 
     public BoardVO showContent(String id) throws SQLException{
