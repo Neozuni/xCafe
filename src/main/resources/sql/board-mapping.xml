@@ -38,15 +38,14 @@
     <!-- #0014 : 글 상세 보기 -->
     <select id="showContent" parameterType="string" resultMap="boardListRM">
         SELECT
-        id,
-        title,
-        createDate,
-        content,
-        userId,
-        count,
-        userName
-        FROM board b, (SELECT userId,userName FROM member) m
-        WHERE b.memberId = m.userId AND id=#{value}
+        b.id,
+        b.title,
+        b.content,
+        m.userName,
+        date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
+        b.count
+        FROM board AS b LEFT JOIN member AS m
+        ON b.memberId = m.id WHERE b.id=#{value}
     </select>
 
     <!--#0012 : BoardList & Paging-->
@@ -81,7 +80,7 @@
               m.userName,
               b.title,
               b.content,
-              date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
+              date_format(b.createdate, '%d-%M-%Y') AS createDate,
               b.count
             FROM board AS b LEFT JOIN member AS m
                 ON m.id = b.memberId
