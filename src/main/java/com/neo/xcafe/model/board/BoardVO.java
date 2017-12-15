@@ -4,9 +4,12 @@ import com.neo.xcafe.model.member.MemberVO;
 
 // #0024 : Join 을 통한 DB 호출 글쓰기
 // 필드 추가 memberId
+// #0026 : updateDate 동작문제 , 글수정삭제 오류 해결
+// 필드 추가 updateDate
 public class BoardVO {
     private int id; // 글번호
     private String createDate; // 글생성일
+    private String updateDate; // 글수정일
     private String title;
     private String content;
     private Boolean state; // 글삭제하면 상태변경후 표시하지 않음
@@ -19,7 +22,8 @@ public class BoardVO {
 
 
 
-    public BoardVO(int id, String createDate, String title, String content, Boolean state,int memberId, MemberVO memberVO) {
+    public BoardVO(int id, String createDate,String updateDate,String title, String content, Boolean state,int memberId, MemberVO memberVO) {
+        this.updateDate = updateDate;
         this.id = id;
         this.createDate = createDate;
         this.title = title;
@@ -109,6 +113,14 @@ public class BoardVO {
 
     public void setMemberId(int memberId) {
         this.memberId = memberId;
+    }
+
+    public String getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(String updateDate) {
+        this.updateDate = updateDate;
     }
 
     @Override

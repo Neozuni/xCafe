@@ -86,6 +86,13 @@ public class BoardController {
         boardService.updateCount(id);
 
         BoardVO bvo=boardService.showContent(id);
+
+        // #0026 : bvo 에 member id 가 없어서 주입
+        // bvo.setMemberId();
+
+        System.out.println(" == Controller/Showcontent - Mvo.getId : "+mvo.getId());
+        System.out.println(" == Controller/Showcontent - bvo : "+bvo);
+        System.out.println(" == Controller/Showcontent - mvo : "+mvo);
         return new ModelAndView("board/show_content", "bvo",bvo);
     }
 

@@ -18,10 +18,12 @@
 
     <!-- #0013 : 글목록에 이름 출력되지 않는 현상 해결 -->
     <!-- result map 를 사용후 정상 출력 가능 -->
+    <!-- // #0026 : updateDate 동작문제 , 글수정삭제 오류 해결 updateDate-->
     <resultMap type="board" id="boardListRM">
         <result property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="createDate" column="createDate"/>
+        <result property="updateDate" column="updateDate"/>
         <result property="content" column="content" />
         <result property="memberVO.userId" column="userId" />
         <result property="count" column="count"/>
@@ -41,8 +43,11 @@
         b.id,
         b.title,
         b.content,
+        b.memberId,
+        m.id as m_id,
         m.userName,
-        date_format(b.createdate, '%h:%m | %d-%M-%Y') AS createDate,
+        date_format(b.createDate, '%h:%m | %d-%M-%Y') AS createDate,
+        date_format(b.updateDate, '%h:%m | %d-%M-%Y') AS updateDate,
         b.count
         FROM board AS b LEFT JOIN member AS m
         ON b.memberId = m.id WHERE b.id=#{value}

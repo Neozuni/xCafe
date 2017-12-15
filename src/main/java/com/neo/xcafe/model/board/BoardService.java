@@ -27,6 +27,7 @@ public class BoardService {
         // 임시 bvo.setCreateDate(id);
     }
 
+    // #0011 : 글상세보기 수정
     public BoardVO showContent(String id) throws SQLException{
         return boardDao.showContent(id);
     }

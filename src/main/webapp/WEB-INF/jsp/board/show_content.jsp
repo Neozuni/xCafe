@@ -39,8 +39,10 @@
                 </tr>
                 <tr>
                     <td>작성자 :  ${requestScope.bvo.memberVO.userName} |
-                        작성일시 : ${requestScope.bvo.createDate}
-                        | Count : ${requestScope.bvo.count}
+                        작성일시 : ${requestScope.bvo.createDate} <br>
+                        Count : ${requestScope.bvo.count}
+                        | 최종수정일 : ${requestScope.bvo.updateDate}
+
                     </td>
                 </tr>
                 <tr>
@@ -60,7 +62,7 @@
                         session.mvo==bvo.id
                         로그인한 사람이랑==현재 이 글을 보고 있는 사람
                         -->
-                        <c:if test="${sessionScope.mvo.userId==bvo.memberVO.userId}">
+                        <c:if test="${sessionScope.mvo.id==bvo.memberVO.id}">
                             <img alt="삭제" src="/resources/img/delete_btn.jpg" onclick="deleteBoard()">
                             <img alt="수정" src="/resources/img/modify_btn.jpg" onclick="updateBoard()">
                         </c:if>
