@@ -42,21 +42,7 @@
 		WHERE userId=#{userId} AND password=#{password}
 	</select>
 
-
-
 </mapper>
-
-
-<!--
-Oracle 구문
-
-INSERT
-		INTO member
-		VALUES(#{userId},#{password}, #{userName},#{phone},#{email})
-
-
-
--->
 
 
 

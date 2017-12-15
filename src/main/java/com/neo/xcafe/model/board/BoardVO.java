@@ -10,10 +10,10 @@ public class BoardVO {
     private int id; // 글번호
     private String createDate; // 글생성일
     private String updateDate; // 글수정일
-    private String title;
-    private String content;
+    private String title; // 글제목
+    private String content; // 글내용
     private Boolean state; // 글삭제하면 상태변경후 표시하지 않음
-    private int memberId;
+    private int memberId; // member의 고유 id 기록 용도
     private int count; //조회수
     private MemberVO memberVO;
 

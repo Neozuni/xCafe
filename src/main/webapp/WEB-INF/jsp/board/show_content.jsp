@@ -24,6 +24,27 @@
             location.href="updateView.do?id=${bvo.id}";
         }
     }
+
+    $(document).ready(function(){
+
+        //listReply(); // **댓글 목록 불러오기
+        listReply2(); // ** json 리턴방식
+
+        // ** 댓글 쓰기 버튼 클릭 이벤트 (ajax로 처리)
+        $("#btnReply").click(function(){
+            var replytext=$("#replytext").val();
+            var bno="${dto.bno}"
+            var param="replytext="+replytext+"&bno="+bno;
+            $.ajax({
+                type: "post",
+                url: "${path}/reply/insert.do",
+                data: param,
+                success: function(){
+                    alert("댓글이 등록되었습니다.");
+                    listReply2();
+                }
+            });
+
 </script>
 <body>
 <table cellpadding="5">
@@ -68,6 +89,19 @@
                         </c:if>
                     </td>
                 </tr>
+
+                <div style="width:650px; text-align: center;">
+                    <br>
+                    <!-- **로그인 한 회원에게만 댓글 작성폼이 보이게 처리 -->
+                    <c:if test="${sessionScope.mvo.id != null}">
+                        <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
+                        <br>
+                        <button type="button" id="btnReply">댓글 작성</button>
+                    </c:if>
+                </div>
+                <!-- **댓글 목록 출력할 위치 -->
+                <div id="listReply"></div>
+
             </table>
         </td>
     </tr>

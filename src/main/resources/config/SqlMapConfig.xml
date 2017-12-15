@@ -9,6 +9,7 @@
     <typeAliases>
         <typeAlias alias="member" type="com.neo.xcafe.model.member.MemberVO"/>
         <typeAlias alias="board" type="com.neo.xcafe.model.board.BoardVO"/>
+        <typeAlias alias="reboard" type="com.neo.xcafe.model.reboard.ReplyVO"/>
     </typeAliases>
 
 
@@ -28,6 +29,7 @@
     <mappers>
         <mapper resource="sql/member-mapping.xml"/>
         <mapper resource="sql/board-mapping.xml" />
+        <mapper resource="sql/reply-mapping.xml" />
     </mappers>
 </configuration>
 
